@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HamburgerMVC.DAL;
 using HamburgerMVC.Models;
 using HamburgerMVC.Models.ViewModels;
+using System.ComponentModel;
 
 namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 {
@@ -77,7 +78,6 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 
 			foreach (int malzemeID in vm.SeciliEkMalzemelerID)
 			{
-
 				HamburgerEkMalzeme hamburgerEkMalzeme = new HamburgerEkMalzeme();
 
 				hamburgerEkMalzeme.HamburgerID = hamburger.HamburgerID;
@@ -95,17 +95,34 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 		// GET: YonetimPaneli/Hamburger/Edit/5
 		public async Task<IActionResult> Edit(int? id)
 		{
+			Hamburger_VM vm = new Hamburger_VM();
+
 			if (id == null)
 			{
 				return NotFound();
 			}
 
-			var hamburger = await _context.Hamburgers.FindAsync(id);
+			var hamburger =  _context.Hamburgers
+				.Include(x => x.HamburgerEkMalzemes)
+				.ThenInclude(x => x.EkMalzeme)
+				.FirstOrDefault(x => x.HamburgerID.Equals(id));
+
 			if (hamburger == null)
 			{
 				return NotFound();
 			}
-			return View(hamburger);
+
+			vm.Hamburger = hamburger;
+			vm.EkMalzemeListesi = new SelectList(_context.EkMalzemes.ToList(), "EkMalzemeID", "EkMalzemeAdi");
+
+			List<HamburgerEkMalzeme> hamburgerEkMalzemeler = _context.HamburgerEkMalzemes.Where(x=>x.HamburgerID.Equals(hamburger.HamburgerID)).ToList();
+
+			foreach(var item in hamburgerEkMalzemeler)
+			{
+				vm.SeciliEkMalzemelerID.Add(item.EkMalzemeID);
+			}
+
+			return View(vm);
 		}
 
 		// POST: YonetimPaneli/Hamburger/Edit/5
@@ -113,9 +130,9 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, [Bind("HamburgerID,HamburgerAdi,HamburgerFiyat,Resim")] Hamburger hamburger)
+		public async Task<IActionResult> Edit(int id, [Bind("Hamburger.HamburgerID,Hamburger.HamburgerAdi,Hamburger.HamburgerFiyat,Hamburger.Resim")] Hamburger_VM vm)
 		{
-			if (id != hamburger.HamburgerID)
+			if (id != vm.Hamburger.HamburgerID)
 			{
 				return NotFound();
 			}
@@ -124,12 +141,12 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 			{
 				try
 				{
-					_context.Update(hamburger);
+					_context.Update(vm.Hamburger);
 					await _context.SaveChangesAsync();
 				}
 				catch (DbUpdateConcurrencyException)
 				{
-					if (!HamburgerExists(hamburger.HamburgerID))
+					if (!HamburgerExists(vm.Hamburger.HamburgerID))
 					{
 						return NotFound();
 					}
@@ -140,7 +157,7 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 				}
 				return RedirectToAction(nameof(Index));
 			}
-			return View(hamburger);
+			return View(vm);
 		}
 
 		// GET: YonetimPaneli/Hamburger/Delete/5
