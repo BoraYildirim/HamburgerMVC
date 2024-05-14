@@ -1,0 +1,56 @@
+﻿@model Hamburger_VM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Hamburger</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Hamburger.HamburgerID" />
+            <div class="form-group">
+                <label asp-for="Hamburger.HamburgerAdi" class="control-label"></label>
+                <input asp-for="Hamburger.HamburgerAdi" class="form-control" />
+                <span asp-validation-for="Hamburger.HamburgerAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hamburger.HamburgerFiyat" class="control-label"></label>
+                <input asp-for="Hamburger.HamburgerFiyat" class="form-control" />
+                <span asp-validation-for="Hamburger.HamburgerFiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hamburger.Resim" class="control-label"></label>
+                <input asp-for="Hamburger.Resim" class="form-control" />
+                <span asp-validation-for="Hamburger.Resim" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                @foreach (var malzeme in Model.EkMalzemeListesi)
+                {
+                    <input type="checkbox" name="SeciliEkMalzemelerID" value="@malzeme.Value" id="@malzeme.Value"
+                    @(Model.SeciliEkMalzemelerID.Contains(int.Parse(malzeme.Value)) ? "checked" : "") />
+                    <label asp-for="@malzeme.Value">@malzeme.Text</label>
+
+                    <br />
+                }
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
