@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HamburgerMVC.Models.Sos>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<h1>Index</h1>
+
+
+    <a class="btn btn-success" asp-area="YonetimPaneli" asp-controller="Sos" asp-action="Create">Create New</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SosAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SosFiyat)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SosAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SosFiyat)
+            </td>
+            <td>
+                    <a asp-area="YonetimPaneli" asp-action="Edit" asp-route-id="@item.SosID">Edit</a> |
+                    <a asp-area="YonetimPaneli" asp-action="Details" asp-route-id="@item.SosID">Details</a> |
+                    <a asp-area="YonetimPaneli" asp-action="Delete" asp-route-id="@item.SosID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,63 @@
+﻿@using HamburgerMVC.Models.ViewModels
+@model Menu_VM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Siparis Ekrani</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Menu.MenuAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Menu.MenuFiyat)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Menu.Hamburger)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Menu.YanUrun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Menu.Icecek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Menu.Boy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.mlist) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuFiyat)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.Hamburger.HamburgerAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YanUrun.YanUrunAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icecek.IcecekAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Boy.BoyAdi)
+            </td>
+            <td>
+                <a asp-action="SepeteEkle" asp-route-id="@item.MenuID">SepeteEkle</a> |               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

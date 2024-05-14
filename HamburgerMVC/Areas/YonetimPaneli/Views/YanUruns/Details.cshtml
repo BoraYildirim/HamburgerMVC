@@ -1,0 +1,36 @@
+﻿@model HamburgerMVC.Models.YanUrun
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>YanUrun</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.YanUrunAdi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.YanUrunAdi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.YanUrunFiyat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.YanUrunFiyat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Resim)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Resim)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.YanUrunID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

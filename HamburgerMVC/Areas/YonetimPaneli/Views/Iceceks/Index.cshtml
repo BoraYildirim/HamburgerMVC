@@ -1,0 +1,47 @@
+﻿@model IEnumerable<HamburgerMVC.Models.Icecek>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IcecekAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IcecekFiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resim)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IcecekAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IcecekFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resim)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IcecekID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IcecekID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IcecekID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
