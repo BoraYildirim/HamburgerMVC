@@ -158,6 +158,8 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 				return RedirectToAction(nameof(Index));
 			}
 			return View(vm);
+
+			
 		}
 
 		// GET: YonetimPaneli/Hamburger/Delete/5
