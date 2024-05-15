@@ -130,7 +130,7 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, [Bind("Hamburger.HamburgerID,Hamburger.HamburgerAdi,Hamburger.HamburgerFiyat,Hamburger.Resim")] Hamburger_VM vm)
+		public async Task<IActionResult> Edit(int id,Hamburger_VM vm)
 		{
 			if (id != vm.Hamburger.HamburgerID)
 			{
@@ -141,6 +141,23 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 			{
 				try
 				{
+					
+					foreach(var item in _context.HamburgerEkMalzemes)
+					{
+						if (item.HamburgerID==id)
+						{
+							_context.HamburgerEkMalzemes.Remove(item);
+							
+						}
+					}
+
+					for (int i = 0; i < vm.SeciliEkMalzemelerID.Count; i++)
+					{
+						HamburgerEkMalzeme hamburgerEk = new HamburgerEkMalzeme() { EkMalzemeID = vm.SeciliEkMalzemelerID[i], HamburgerID = id };
+						_context.HamburgerEkMalzemes.Add(hamburgerEk);
+					}
+
+
 					_context.Update(vm.Hamburger);
 					await _context.SaveChangesAsync();
 				}
