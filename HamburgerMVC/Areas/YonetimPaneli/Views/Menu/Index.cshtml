@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HamburgerMVC.Models.Menu>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuFiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hamburger.HamburgerAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YanUrun.YanUrunAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icecek.IcecekAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Boy.BoyAdi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hamburger.HamburgerAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YanUrun.YanUrunAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icecek.IcecekAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Boy.BoyAdi)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MenuID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MenuID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MenuID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
