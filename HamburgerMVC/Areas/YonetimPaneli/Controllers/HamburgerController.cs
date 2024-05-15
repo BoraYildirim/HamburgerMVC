@@ -35,19 +35,27 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 			{
 				return NotFound();
 			}
+            Hamburger_VM vm = new Hamburger_VM();
+			vm.Hamburger = _context.Hamburgers.FirstOrDefault(x => x.HamburgerID.Equals(id));
+			
 
-			var hamburger = await _context.Hamburgers
+            vm.Hamburger = await _context.Hamburgers
 				.Include(x => x.HamburgerEkMalzemes)
 				.ThenInclude(x => x.EkMalzeme)
 				.FirstOrDefaultAsync(m => m.HamburgerID == id);
 
 
-			if (hamburger == null)
+
+            vm.elist =_context.HamburgerEkMalzemes.Include(x=>x.EkMalzeme).Where(x=>x.HamburgerID==id).ToList();
+
+            List<HamburgerEkMalzeme> hamburgerEkMalzemeler = _context.HamburgerEkMalzemes.Where(x => x.HamburgerID.Equals(vm.Hamburger.HamburgerID)).ToList();
+
+            if (vm.Hamburger == null)
 			{
 				return NotFound();
 			}
 
-			return View(hamburger);
+			return View(vm);
 		}
 
 		// GET: YonetimPaneli/Hamburger/Create

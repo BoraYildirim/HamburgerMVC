@@ -1,4 +1,4 @@
-﻿@model HamburgerMVC.Models.Hamburger
+﻿@model Hamburger_VM
 
 @{
     ViewData["Title"] = "Details";
@@ -11,26 +11,43 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HamburgerAdi)
+            @Html.DisplayNameFor(model => model.Hamburger.HamburgerAdi)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HamburgerAdi)
+            @Html.DisplayFor(model => model.Hamburger.HamburgerAdi)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HamburgerFiyat)
+            @Html.DisplayNameFor(model => model.Hamburger.HamburgerFiyat)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HamburgerFiyat)
+            @Html.DisplayFor(model => model.Hamburger.HamburgerFiyat)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Resim)
+            @Html.DisplayNameFor(model => model.Hamburger.Resim)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Resim)
+            @Html.DisplayFor(model => model.Hamburger.Resim)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Hamburger.HamburgerEkMalzemes)
+        </dt>
+
+        
+        <div class="form-group">
+            @foreach (HamburgerEkMalzeme hamburgerEkMalzeme in Model.elist)
+            {
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => hamburgerEkMalzeme.EkMalzeme.EkMalzemeAdi)
+                </dd>
+                                 
+            }
+        </div>
+
+
+
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.HamburgerID">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Hamburger.HamburgerID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

@@ -9,6 +9,8 @@ namespace HamburgerMVC.Models.ViewModels
 
         public List<int> SeciliEkMalzemelerID { get; set; }
 
+        public List<HamburgerEkMalzeme> elist { get; set; }
+
         public Hamburger_VM()
         {
             SeciliEkMalzemelerID = new List<int>();
