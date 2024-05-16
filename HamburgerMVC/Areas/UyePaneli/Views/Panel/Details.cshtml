@@ -1,0 +1,52 @@
+﻿@model HamburgerMVC.Models.Uye
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="justify-content-between text-center ">
+<h1 >Details</h1>
+</div>
+
+
+
+<div>
+    <h4>Uye</h4>
+    <hr />
+    <dl class="row">
+            <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Soyad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Soyad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Adres)
+        </dd>           
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+       
+    </dl>
+</div>
+
+
+
+<div class="justify-content-between text-center">
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index" class="btn btn-ınfo btn-outline-primary">Panele Geri Git</a>
+</div>
+
+</div>

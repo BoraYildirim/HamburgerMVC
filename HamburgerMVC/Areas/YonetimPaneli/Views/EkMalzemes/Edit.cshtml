@@ -3,12 +3,13 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="text-center">
+<h1>Guncelle</h1>
 
-<h1>Edit</h1>
+<h4>Ek Malzeme</h4>
 
-<h4>EkMalzeme</h4>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -28,15 +29,16 @@
                 <input asp-for="Resim" class="form-control" />
                 <span asp-validation-for="Resim" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+                <div>
+                    <a asp-action="Index">Listeye Dön</a>
+                </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

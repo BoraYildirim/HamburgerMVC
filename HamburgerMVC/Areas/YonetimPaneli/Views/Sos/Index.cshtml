@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
     Layout = "_Layout";
 }
+<div class="text-center">
+<h1>Soslar</h1>
 
-<h1>Index</h1>
 
-
-    <a class="btn btn-success" asp-area="YonetimPaneli" asp-controller="Sos" asp-action="Create">Create New</a>
-
+    <a class="btn btn-success" asp-area="YonetimPaneli" asp-controller="Sos" asp-action="Create">Sos Oluştur</a>
+    </div>
 <table class="table">
     <thead>
         <tr>
@@ -32,9 +32,9 @@
                 @Html.DisplayFor(modelItem => item.SosFiyat)
             </td>
             <td>
-                    <a asp-area="YonetimPaneli" asp-action="Edit" asp-route-id="@item.SosID">Edit</a> |
-                    <a asp-area="YonetimPaneli" asp-action="Details" asp-route-id="@item.SosID">Details</a> |
-                    <a asp-area="YonetimPaneli" asp-action="Delete" asp-route-id="@item.SosID">Delete</a>
+                    <a class="btn btn-warning" asp-area="YonetimPaneli" asp-action="Edit" asp-route-id="@item.SosID">Guncelle</a> |
+                    <a class="btn btn-info" asp-area="YonetimPaneli" asp-action="Details" asp-route-id="@item.SosID">Detaylar</a> |
+                    <a class="btn btn-danger" asp-area="YonetimPaneli" asp-action="Delete" asp-route-id="@item.SosID">Sil</a>
             </td>
         </tr>
 }

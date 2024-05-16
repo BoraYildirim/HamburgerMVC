@@ -50,13 +50,14 @@
 									<a class="nav-link text-dark" asp-area="YonetimPaneli" asp-controller="Menu" asp-action="Index">Menu Islemleri</a>
 								</li>
 							}
+							else
+							{
+								<li class="nav-item">
+									<a class="nav-link text-dark" asp-area="UyePaneli" asp-controller="SiparisGoruntule" asp-action="Index">Menuleri Goruntule</a>
+								</li>
+							}
 						}
-						else
-						{
-							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="UyePaneli" asp-controller="SiparisGoruntule" asp-action="Index">Menuleri Goruntule</a>
-							</li>
-						}
+						
 
 
 					</ul>
