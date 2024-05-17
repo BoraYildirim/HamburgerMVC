@@ -7,6 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Session süresi
+    options.Cookie.HttpOnly = true; // Güvenlik için
+    options.Cookie.IsEssential = true; // GDPR için gerekli
+});
+
 //Context sýnýfý için...
 builder.Services.AddDbContext<BurgerDBContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
 
@@ -14,6 +21,7 @@ builder.Services.AddDbContext<BurgerDBContext>(x => x.UseSqlServer(builder.Confi
 builder.Services.AddIdentity<Uye, Rol>(x => x.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<BurgerDBContext>()
                 .AddRoles<Rol>();
+
 
 var app = builder.Build();
 
@@ -23,8 +31,9 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 

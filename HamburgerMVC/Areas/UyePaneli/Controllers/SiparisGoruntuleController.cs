@@ -26,5 +26,6 @@ namespace HamburgerMVC.Areas.UyePaneli.Controllers
 
             return View(model);
         }
+      
     }
 }

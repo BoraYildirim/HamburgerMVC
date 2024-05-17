@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.Boy.BoyAdi)
             </td>
             <td>
-                <a asp-action="SepeteEkle" asp-route-id="@item.MenuID">SepeteEkle</a> |               
+                <a asp-area="UyePaneli" asp-controller="Cart" asp-action="Add" asp-route-id="@item.MenuID">SepeteEkle</a>           
             </td>
         </tr>
 }

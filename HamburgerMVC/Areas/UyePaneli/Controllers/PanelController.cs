@@ -29,7 +29,10 @@ namespace HamburgerMVC.Areas.UyePaneli.Controllers
         {         
             ViewBag.ID = GetUserID();         
             return View();
+
+
         }
+
 
 		public async Task<IActionResult> Details()
 		{
