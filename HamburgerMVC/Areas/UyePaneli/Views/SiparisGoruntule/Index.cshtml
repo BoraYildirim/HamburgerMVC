@@ -12,6 +12,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Menu.Resim)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Menu.MenuAdi)
             </th>
             <th>
@@ -36,6 +39,9 @@
     <tbody>
 @foreach (var item in Model.mlist) {
         <tr>
+                <td>                 
+                    <img src="~/KapakResimleri/@item.Resim" width="120px" height="90px" />
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MenuAdi)
             </td>

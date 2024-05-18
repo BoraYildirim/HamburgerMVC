@@ -3,12 +3,13 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
+<div class="text-center">
+<h1>İçecekler</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create">Oluştur</a>
 </p>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -37,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Resim)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IcecekID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IcecekID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IcecekID">Delete</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IcecekID">Güncelle</a> |
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.IcecekID">Detay</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IcecekID">Sil</a>
             </td>
         </tr>
 }

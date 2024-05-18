@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HamburgerMVC.DAL;
 using HamburgerMVC.Models;
+using HamburgerMVC.Models.ViewModels;
+using System.Drawing;
 
 namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
 {
@@ -52,31 +54,63 @@ namespace HamburgerMVC.Areas.YonetimPaneli.Controllers
         // GET: YonetimPaneli/Menu/Create
         public IActionResult Create()
         {
-            ViewData["BoyID"] = new SelectList(_context.Boys, "BoyID", "BoyAdi");
-            ViewData["HamburgerID"] = new SelectList(_context.Hamburgers, "HamburgerID", "HamburgerAdi");
-            ViewData["IcecekID"] = new SelectList(_context.Iceceks, "IcecekID", "IcecekAdi");
-            ViewData["YanUrunID"] = new SelectList(_context.YanUruns, "YanUrunID", "YanUrunAdi");
-            return View();
+            Menu_VM vm = new Menu_VM();
+            vm.Boy = new SelectList(_context.Boys.ToList(), "BoyID", "BoyAdi");
+            vm.Hamburger = new SelectList(_context.Hamburgers.ToList(), "HamburgerID", "HamburgerAdi");
+            vm.Icecek = new SelectList(_context.Iceceks.ToList(), "IcecekID", "IcecekAdi");
+            vm.YanUrun = new SelectList(_context.YanUruns.ToList(), "YanUrunID", "YanUrunAdi");
+            return View(vm);
         }
 
         // POST: YonetimPaneli/Menu/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MenuID,MenuAdi,MenuFiyat,HamburgerID,YanUrunID,IcecekID,BoyID,Resim")] Menu menu)
+        public async Task<IActionResult> Create(MenuEkle menuEkle)
         {
+
+
             if (ModelState.IsValid)
             {
+
+                Menu menu = new Menu();
+                menu.MenuAdi = menuEkle.MenuAdi;
+                menu.BoyID = menuEkle.BoyID;
+                menu.HamburgerID = menuEkle.HamburgerID;
+                menu.IcecekID = menuEkle.IcecekID;
+                menu.YanUrunID = menuEkle.YanUrunID;
+                menu.MenuFiyat = menuEkle.MenuFiyat;
+
+
+
+                Guid guid = Guid.NewGuid();
+                string dosyaAdi = guid.ToString();
+                dosyaAdi += menuEkle.ResimYolu.FileName;
+                string dosyaYolu = "wwwroot/KapakResimleri/";
+                menu.Resim = dosyaAdi;
+
+                FileStream fs = new FileStream(dosyaYolu + dosyaAdi, FileMode.Create);
+                menuEkle.ResimYolu.CopyTo(fs);
+                fs.Close();
+
+
+
+
                 _context.Add(menu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BoyID"] = new SelectList(_context.Boys, "BoyID", "BoyAdi", menu.BoyID);
-            ViewData["HamburgerID"] = new SelectList(_context.Hamburgers, "HamburgerID", "HamburgerAdi", menu.HamburgerID);
-            ViewData["IcecekID"] = new SelectList(_context.Iceceks, "IcecekID", "IcecekAdi", menu.IcecekID);
-            ViewData["YanUrunID"] = new SelectList(_context.YanUruns, "YanUrunID", "YanUrunAdi", menu.YanUrunID);
-            return View(menu);
+            else
+            {
+                Menu_VM menuVM = new Menu_VM();
+                menuVM.Boy = new SelectList(_context.Boys.ToList(), "BoyID", "BoyAdi");
+                menuVM.Hamburger = new SelectList(_context.Hamburgers.ToList(), "HamburgerID", "HamburgerAdi");
+                menuVM.Icecek = new SelectList(_context.Iceceks.ToList(), "IcecekID", "IcecekAdi");
+                menuVM.YanUrun = new SelectList(_context.YanUruns.ToList(), "YanUrunID", "YanUrunAdi");
+
+                return View(menuVM);
+            }
+
         }
 
         // GET: YonetimPaneli/Menu/Edit/5

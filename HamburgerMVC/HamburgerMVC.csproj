@@ -26,6 +26,7 @@
     <Folder Include="Areas\UyePaneli\Models\" />
     <Folder Include="Areas\YonetimPaneli\Data\" />
     <Folder Include="Areas\YonetimPaneli\Models\" />
+    <Folder Include="wwwroot\KapakResimleri\" />
   </ItemGroup>
 
 </Project>

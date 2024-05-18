@@ -1,58 +1,62 @@
-﻿@model HamburgerMVC.Models.Menu
+﻿@model Menu_VM
 
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
+<div class="text-center">
+<h1>Menu Oluştur</h1>
 
 <h4>Menu</h4>
+</div>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MenuAdi" class="control-label"></label>
-                <input asp-for="MenuAdi" class="form-control" />
-                <span asp-validation-for="MenuAdi" class="text-danger"></span>
+                <label asp-for="MenuEkle.MenuAdi" class="control-label"></label>
+                <input asp-for="MenuEkle.MenuAdi" class="form-control" />
+                <span asp-validation-for="MenuEkle.MenuAdi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MenuFiyat" class="control-label"></label>
-                <input asp-for="MenuFiyat" class="form-control" />
-                <span asp-validation-for="MenuFiyat" class="text-danger"></span>
+                <label asp-for="MenuEkle.MenuFiyat" class="control-label"></label>
+                <input asp-for="MenuEkle.MenuFiyat" class="form-control" />
+                <span asp-validation-for="MenuEkle.MenuFiyat" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MenuEkle.HamburgerID" class="control-label"></label>
+                <select asp-for="MenuEkle.HamburgerID" class="form-control" asp-items="Model.Hamburger"></select>
             </div>
             <div class="form-group">
-                <label asp-for="HamburgerID" class="control-label"></label>
-                <select asp-for="HamburgerID" class ="form-control" asp-items="ViewBag.HamburgerID"></select>
+                <label asp-for="MenuEkle.YanUrunID" class="control-label"></label>
+                <select asp-for="MenuEkle.YanUrunID" class="form-control" asp-items="Model.YanUrun"></select>
             </div>
             <div class="form-group">
-                <label asp-for="YanUrunID" class="control-label"></label>
-                <select asp-for="YanUrunID" class ="form-control" asp-items="ViewBag.YanUrunID"></select>
+                <label asp-for="MenuEkle.IcecekID" class="control-label"></label>
+                <select asp-for="MenuEkle.IcecekID" class="form-control" asp-items="Model.Icecek"></select>
             </div>
             <div class="form-group">
-                <label asp-for="IcecekID" class="control-label"></label>
-                <select asp-for="IcecekID" class ="form-control" asp-items="ViewBag.IcecekID"></select>
+                <label asp-for="MenuEkle.BoyID" class="control-label"></label>
+                <select asp-for="MenuEkle.BoyID" class="form-control" asp-items="Model.Boy"></select>
             </div>
             <div class="form-group">
-                <label asp-for="BoyID" class="control-label"></label>
-                <select asp-for="BoyID" class ="form-control" asp-items="ViewBag.BoyID"></select>
+                <label asp-for="MenuEkle.ResimYolu" class="control-label"></label>
+                <input asp-for="MenuEkle.ResimYolu" class="form-control" type="file" />
+                <span asp-validation-for="MenuEkle.ResimYolu" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Resim" class="control-label"></label>
-                <input asp-for="Resim" class="form-control" />
-                <span asp-validation-for="Resim" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <br />
+            <div class="form-group text-center">
                 <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <div class="text-center">
+                <a asp-action="Index">Listeye Dön</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
