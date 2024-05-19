@@ -1,4 +1,6 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<Uye> UserManager
+@inject SignInManager<Uye> SignInManager
 @model UrunListesi_VM
 
 @{
@@ -57,7 +59,7 @@
 				<div class="row g-3">
 					<div class="col-6 text-start">
 						<img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="~/img/about-1.jpg">
-					</div>,
+					</div>
 					<div class="col-6 text-start">
 						<img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="~/img/about-2.jpg" style="margin-top: 25%;">
 					</div>
@@ -120,25 +122,8 @@
 							<h6 class="mt-n1 mb-0">Menüler</h6>
 						</div>
 					</a>
-				</li>
-				<li class="nav-item">
-					<a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
-						<i class="fa fa-hamburger fa-2x text-primary"></i>
-						<div class="ps-3">
-							<small class="text-body">Sadece</small>
-							<h6 class="mt-n1 mb-0">Hamburgerler</h6>
-						</div>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
-						<i class="fa fa-utensils fa-2x text-primary"></i>
-						<div class="ps-3">
-							<small class="text-body">Lezzetli</small>
-							<h6 class="mt-n1 mb-0">Yan Ürünler</h6>
-						</div>
-					</a>
-				</li>
+				</li>				
+				
 			</ul>
 			<div class="tab-content">
 				<div id="tab-1" class="tab-pane fade show p-0 active">
@@ -146,65 +131,47 @@
 						@*Burası Tekrar Eden Kısım ForEach Gelecek Buraya Menüler*@
 						@foreach (Menu menu in Model.Menuler)
 						{
-							<div class="col-lg-6">
-								<div class="d-flex align-items-center">
-									<img class="flex-shrink-0 img-fluid rounded" src="~/img/menu-1.jpg" alt="" style="width: 80px;">
-									<div class="w-100 d-flex flex-column text-start ps-4">
-										<h5 class="d-flex justify-content-between border-bottom pb-2">
-											<span>@menu.MenuAdi</span>
-											<span class="text-primary">@menu.MenuFiyat TL</span>
-										</h5>
-										<small class="fst-italic">Menü Açıklaması Gelecek</small>
+							@if (SignInManager.IsSignedIn(User))
+							{
+								<a asp-area="UyePaneli" asp-controller="SiparisGoruntule" asp-action="Index">
+									<div class="col-lg-6">
+										<div class="d-flex align-items-center">
+											<img class="flex-shrink-0 img-fluid rounded" src="~/KapakResimleri/@menu.Resim" alt="" style="width: 80px;">
+											<div class="w-100 d-flex flex-column text-start ps-4">
+												<h5 class="d-flex justify-content-between border-bottom pb-2">
+													<span>@menu.MenuAdi</span>
+													<span class="text-primary">@menu.MenuFiyat TL</span>
+												</h5>
+												<small class="fst-italic">Menü Açıklaması Gelecek</small>
+
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
+								</a>
+							}
+							else
+							{
+								<a asp-area="" asp-controller="Login" asp-action="Register">
+									<div class="col-lg-6">
+										<div class="d-flex align-items-center">
+											<img class="flex-shrink-0 img-fluid rounded" src="~/KapakResimleri/@menu.Resim" alt="" style="width: 80px;">
+											<div class="w-100 d-flex flex-column text-start ps-4">
+												<h5 class="d-flex justify-content-between border-bottom pb-2">
+													<span>@menu.MenuAdi</span>
+													<span class="text-primary">@menu.MenuFiyat TL</span>
+												</h5>
+												<small class="fst-italic">Menü Açıklaması Gelecek</small>
+
+											</div>
+										</div>
+									</div>
+								</a>
+							}
+							
 						}
 					</div>
 				</div>
 
-				<div id="tab-2" class="tab-pane fade show p-0">
-					<div class="row g-4">
-						@*Burası da Aynı Şekilde Sorgularla Gelecek Hamburgerler İçin*@
-						@foreach (Hamburger hamburger in Model.Hamburgerler)
-						{
-							<div class="col-lg-6">
-								<div class="d-flex align-items-center">
-									<img class="flex-shrink-0 img-fluid rounded" src="~/img/menu-1.jpg" alt="" style="width: 80px;">
-									<div class="w-100 d-flex flex-column text-start ps-4">
-										<h5 class="d-flex justify-content-between border-bottom pb-2">
-											<span>@hamburger.HamburgerAdi</span>
-											<span class="text-primary">@hamburger.HamburgerFiyat TL</span>
-										</h5>
-										<small class="fst-italic">Buraya Hamburger Açıklaması Gelecek</small>
-									</div>
-								</div>
-							</div>
-						}
-
-					</div>
-				</div>
-
-				<div id="tab-3" class="tab-pane fade show p-0">
-					<div class="row g-4">
-						@*Aynı Şekilde Sorgu Gelecek*@
-						@foreach (EkMalzeme ekMalzeme in Model.EkMalzemeler)
-						{
-							<div class="col-lg-6">
-								<div class="d-flex align-items-center">
-									<img class="flex-shrink-0 img-fluid rounded" src="~/img/menu-1.jpg" alt="" style="width: 80px;">
-									<div class="w-100 d-flex flex-column text-start ps-4">
-										<h5 class="d-flex justify-content-between border-bottom pb-2">
-											<span>@ekMalzeme.EkMalzemeAdi</span>
-											<span class="text-primary">@ekMalzeme.EkMalzemeFiyat TL</span>
-										</h5>
-										<small class="fst-italic">Buraya Açıklama Gelecek</small>
-									</div>
-								</div>
-							</div>
-						}
-
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -221,7 +188,7 @@
 			<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 				<div class="team-item text-center rounded overflow-hidden">
 					<div class="rounded-circle overflow-hidden m-4">
-						<img class="img-fluid" src="~/img/team-1.jpg" alt="">
+						<img class="img-fluid" src="~/img/team1.jpg" alt="">
 					</div>
 					<h5 class="mb-0">Bora Yıldırım</h5>
 					<small>Gurme</small>
@@ -235,7 +202,7 @@
 			<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
 				<div class="team-item text-center rounded overflow-hidden">
 					<div class="rounded-circle overflow-hidden m-4">
-						<img class="img-fluid" src="~/img/team-2.jpg" alt="">
+						<img class="img-fluid" src="~/img/team2.jpg" alt="">
 					</div>
 					<h5 class="mb-0">Emre Bekfilavi</h5>
 					<small>Lezzet Sorumlusu</small>
@@ -249,7 +216,7 @@
 			<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
 				<div class="team-item text-center rounded overflow-hidden">
 					<div class="rounded-circle overflow-hidden m-4">
-						<img class="img-fluid" src="~/img/team-3.jpg" alt="">
+						<img class="img-fluid" src="~/img/team3.jpg" alt="">
 					</div>
 					<h5 class="mb-0">Ünal Kork</h5>
 					<small>Fırın Sorumlusu</small>

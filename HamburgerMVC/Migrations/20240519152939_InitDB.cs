@@ -384,14 +384,14 @@ namespace HamburgerMVC.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "5f151ea6-4abd-42e8-9342-13bcbd292bf9", "Yonetici", "YONETICI" },
-                    { 2, "9a3410ef-b467-4d3d-9f0e-a473a832446e", "Uye", "UYE" }
+                    { 1, "2b785952-daa8-406b-8daf-7646551b3708", "Yonetici", "YONETICI" },
+                    { 2, "7fd729e8-008f-49ff-b49c-29c82195a1da", "Uye", "UYE" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Ad", "Adres", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Soyad", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "Bora", "Uskudar", "48c168d9-3833-4b87-a040-5be00ffe725d", "Bora@gmail.com", false, false, null, "BORA@GMAIL.COM", "BORA@GMAIL.COM", "AQAAAAIAAYagAAAAENOMRrVzFYPhVsuu5ziQkTMbmsHlvPgFuD+ED+6LmwFdn36lQc6D8R10sbV3yCno/w==", null, false, "444bb991-0d45-4021-aefd-964f32fbe8af", "Yildirim", false, "Bora@gmail.com" });
+                values: new object[] { 1, 0, "Bora", "Uskudar", "777602df-baca-41e4-a19f-24e6a0ff8c72", "Bora@gmail.com", false, false, null, "BORA@GMAIL.COM", "BORA@GMAIL.COM", "AQAAAAIAAYagAAAAEHjazcFnVOzuy0tXfK6I8dx55o3qPp1f4I30sHIP6ph1j1oiGT9A6I/AjBlUahN07Q==", null, false, "6dd6b5de-f5e0-4959-bb03-efc11393eb84", "Yildirim", false, "Bora@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Boys",
@@ -468,10 +468,10 @@ namespace HamburgerMVC.Migrations
                 columns: new[] { "MenuID", "BoyID", "HamburgerID", "IcecekID", "MenuAdi", "MenuFiyat", "Resim", "YanUrunID" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, 1, "GamerMenu", 300m, null, 1 },
-                    { 2, 1, 2, 2, "DoyuranMenu", 350m, null, 2 },
-                    { 3, 1, 3, 3, "GurmeMenu", 370m, null, 2 },
-                    { 4, 1, 4, 4, "BEUMenu", 400m, null, 4 }
+                    { 1, 1, 1, 1, "GamerMenu", 300m, "Burger1.jpg", 1 },
+                    { 2, 1, 2, 2, "DoyuranMenu", 350m, "Burger2.jpg", 2 },
+                    { 3, 1, 3, 3, "GurmeMenu", 370m, "Burger3.jpg", 2 },
+                    { 4, 1, 4, 4, "BEUMenu", 400m, "Burger4.jpg", 4 }
                 });
 
             migrationBuilder.CreateIndex(

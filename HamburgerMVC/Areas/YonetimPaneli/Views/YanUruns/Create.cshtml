@@ -4,12 +4,13 @@
     Layout = "_AdminLayout";
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
+<div class="text-center">
+<h1>Yan Urun Oluştur</h1>
 
 <h4>YanUrun</h4>
+</div>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -23,21 +24,23 @@
                 <input asp-for="YanUrunFiyat" class="form-control" />
                 <span asp-validation-for="YanUrunFiyat" class="text-danger"></span>
             </div>
-            <div class="form-group">
+         @*    <div class="form-group">
                 <label asp-for="Resim" class="control-label"></label>
                 <input asp-for="Resim" class="form-control" />
                 <span asp-validation-for="Resim" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </div> *@
+            <br />
+            <div class="form-group text-center">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <div>
+                    <a asp-action="Index">Listeye Dön</a>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

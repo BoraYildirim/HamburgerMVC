@@ -49,10 +49,13 @@ namespace HamburgerMVC.Areas.UyePaneli.Controllers
             else
             {
                 cartItem.Adet += 1;
+                HttpContext.Session.SetJson("Cart", items);
+                TempData["Mesaj"] = "Ürün Sepete Eklenmiştir";
+                return RedirectToAction("Index");
             }
             HttpContext.Session.SetJson("Cart", items);
             TempData["Mesaj"] = "Ürün Sepete Eklenmiştir";
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "SiparisGoruntule");
         }
 
         public async Task<IActionResult> Decrease(int id)

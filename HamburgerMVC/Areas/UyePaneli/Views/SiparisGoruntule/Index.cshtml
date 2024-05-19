@@ -7,63 +7,39 @@
 
 <h1>Siparis Ekrani</h1>
 
+<div class="row justify-content-between">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Menu.Resim)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Menu.MenuAdi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Menu.MenuFiyat)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Menu.Hamburger)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Menu.YanUrun)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Menu.Icecek)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Menu.Boy)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.mlist) {
-        <tr>
-                <td>                 
-                    <img src="~/KapakResimleri/@item.Resim" width="120px" height="90px" />
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MenuAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MenuFiyat)
-            </td>           
-            <td>
-                @Html.DisplayFor(modelItem => item.Hamburger.HamburgerAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YanUrun.YanUrunAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Icecek.IcecekAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Boy.BoyAdi)
-            </td>
-            <td>
-                <a asp-area="UyePaneli" asp-controller="Cart" asp-action="Add" asp-route-id="@item.MenuID">SepeteEkle</a>           
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+   
+        @foreach (var item in Model.mlist)
+        {
+
+            <div class="card mb-5" style="width:18rem;">
+
+                <img src="~/KapakResimleri/@item.Resim" class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @Html.DisplayFor(modelItem => item.MenuAdi)
+                    </h5>
+        <p class="card-text">
+                        @Html.DisplayFor(modelItem => item.Hamburger.HamburgerAdi)
+        
+        
+                        @Html.DisplayFor(modelItem => item.YanUrun.YanUrunAdi)
+       
+        
+                        @Html.DisplayFor(modelItem => item.Icecek.IcecekAdi)
+       
+        
+                        @Html.DisplayFor(modelItem => item.Boy.BoyAdi)
+
+        </p>
+                    <h3>@Html.DisplayFor(modelItem => item.MenuFiyat)</h3>
+
+
+                    <a asp-area="UyePaneli" asp-controller="Cart" asp-action="Add" asp-route-id="@item.MenuID">SepeteEkle</a>
+        
+        </div>
+        </div>
+        <br />
+        }
+</div>

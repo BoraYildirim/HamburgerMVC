@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HamburgerMVC.Migrations
 {
     [DbContext(typeof(BurgerDBContext))]
-    [Migration("20240513132617_InitDB")]
+    [Migration("20240519152939_InitDB")]
     partial class InitDB
     {
         /// <inheritdoc />
@@ -286,6 +286,7 @@ namespace HamburgerMVC.Migrations
                             IcecekID = 1,
                             MenuAdi = "GamerMenu",
                             MenuFiyat = 300m,
+                            Resim = "Burger1.jpg",
                             YanUrunID = 1
                         },
                         new
@@ -296,6 +297,7 @@ namespace HamburgerMVC.Migrations
                             IcecekID = 2,
                             MenuAdi = "DoyuranMenu",
                             MenuFiyat = 350m,
+                            Resim = "Burger2.jpg",
                             YanUrunID = 2
                         },
                         new
@@ -306,6 +308,7 @@ namespace HamburgerMVC.Migrations
                             IcecekID = 3,
                             MenuAdi = "GurmeMenu",
                             MenuFiyat = 370m,
+                            Resim = "Burger3.jpg",
                             YanUrunID = 2
                         },
                         new
@@ -316,6 +319,7 @@ namespace HamburgerMVC.Migrations
                             IcecekID = 4,
                             MenuAdi = "BEUMenu",
                             MenuFiyat = 400m,
+                            Resim = "Burger4.jpg",
                             YanUrunID = 4
                         });
                 });
@@ -353,14 +357,14 @@ namespace HamburgerMVC.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "5f151ea6-4abd-42e8-9342-13bcbd292bf9",
+                            ConcurrencyStamp = "2b785952-daa8-406b-8daf-7646551b3708",
                             Name = "Yonetici",
                             NormalizedName = "YONETICI"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "9a3410ef-b467-4d3d-9f0e-a473a832446e",
+                            ConcurrencyStamp = "7fd729e8-008f-49ff-b49c-29c82195a1da",
                             Name = "Uye",
                             NormalizedName = "UYE"
                         });
@@ -521,15 +525,15 @@ namespace HamburgerMVC.Migrations
                             AccessFailedCount = 0,
                             Ad = "Bora",
                             Adres = "Uskudar",
-                            ConcurrencyStamp = "48c168d9-3833-4b87-a040-5be00ffe725d",
+                            ConcurrencyStamp = "777602df-baca-41e4-a19f-24e6a0ff8c72",
                             Email = "Bora@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "BORA@GMAIL.COM",
                             NormalizedUserName = "BORA@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENOMRrVzFYPhVsuu5ziQkTMbmsHlvPgFuD+ED+6LmwFdn36lQc6D8R10sbV3yCno/w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHjazcFnVOzuy0tXfK6I8dx55o3qPp1f4I30sHIP6ph1j1oiGT9A6I/AjBlUahN07Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "444bb991-0d45-4021-aefd-964f32fbe8af",
+                            SecurityStamp = "6dd6b5de-f5e0-4959-bb03-efc11393eb84",
                             Soyad = "Yildirim",
                             TwoFactorEnabled = false,
                             UserName = "Bora@gmail.com"

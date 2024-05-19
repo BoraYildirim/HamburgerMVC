@@ -4,12 +4,13 @@
     ViewData["Title"] = "Index";
     Layout = "_AdminLayout";
 }
-
-<h1>Index</h1>
+<div class="text-center"> 
+<h1>Yan Ürünler</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create">Oluştur</a>
 </p>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -38,9 +39,9 @@
                 @Html.DisplayFor(modelItem => item.Resim)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.YanUrunID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.YanUrunID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.YanUrunID">Delete</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.YanUrunID">Güncelle</a> |
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.YanUrunID">Detay</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.YanUrunID">Sil</a>
             </td>
         </tr>
 }
