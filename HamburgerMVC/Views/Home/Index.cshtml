@@ -1,8 +1,266 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@model UrunListesi_VM
+
+@{
+	ViewData["Title"] = "Hoşgeldiniz";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Service Start -->
+<div class="container-xxl py-5">
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+				<div class="service-item rounded pt-3">
+					<div class="p-4">
+						<i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+						<h5>Usta Şeflerimiz</h5>
+						<p>Alanlarında Usta Şeflerimiz Hizmetinizdedir</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+				<div class="service-item rounded pt-3">
+					<div class="p-4">
+						<i class="fa fa-3x fa-utensils text-primary mb-4"></i>
+						<h5>Kaliteli Yiyecek</h5>
+						<p>Ürünlerimiz Her Zaman Tazedir Ve Siparişinizle Birlikte Hazırlanır</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+				<div class="service-item rounded pt-3">
+					<div class="p-4">
+						<i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
+						<h5>Online Sipariş</h5>
+						<p>Sadece Restoranımızda Değil Evinizde De Bu Lezzete Ulaşabilirsiniz</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+				<div class="service-item rounded pt-3">
+					<div class="p-4">
+						<i class="fa fa-3x fa-headset text-primary mb-4"></i>
+						<h5>7/24 Servis</h5>
+						<p>İstediğiniz Her An Bize Ulaşabilir Ve Sorularınıza Cevap Alabilirsiniz</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+<!-- Service End -->
+<!-- About Start -->
+<div class="container-xxl py-5">
+	<div class="container">
+		<div class="row g-5 align-items-center">
+			<div class="col-lg-6">
+				<div class="row g-3">
+					<div class="col-6 text-start">
+						<img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="~/img/about-1.jpg">
+					</div>,
+					<div class="col-6 text-start">
+						<img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="~/img/about-2.jpg" style="margin-top: 25%;">
+					</div>
+					<div class="col-6 text-end">
+						<img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="~/img/about-3.jpg">
+					</div>
+					<div class="col-6 text-end">
+						<img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="~/img/about-4.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<h5 class="section-title ff-secondary text-start text-primary fw-normal">Hakkımızda</h5>
+				<h1 class="mb-4">Lezzetin Adresi <i class="fa fa-utensils text-primary me-2"></i>BEU Burger'e Hoşgeldiniz</h1>
+				<p class="mb-4">
+					BEU Burger, lezzet ve keyfin buluştuğu bir adres olarak burger tutkunlarının favori noktası haline geldi. Misafirlerimize enfes tatlar sunarken, dostça bir ortamda keyifli anlar yaşamalarını sağlamak için buradayız.
+
+					Kaliteli malzemelerle hazırladığımız özel tariflerimizle damaklarda unutulmaz izler bırakıyoruz. BEU Burger deneyimi, sadece bir yemek molası değil, aynı zamanda dostlarınızla keyifli anlar paylaşabileceğiniz bir buluşma noktasıdır.
+				</p>
+				<p class="mb-4">Misafir memnuniyetini her zaman ön planda tutarak, lezzetin ve mutluluğun sınırlarını zorluyoruz. Siz de BEU Burger ailesine katılın ve lezzetin doruklarına çıkın!</p>
+				<div class="row g-4 mb-4">
+					<div class="col-sm-6">
+						<div class="d-flex align-items-center border-start border-5 border-primary px-3">
+							<h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">15</h1>
+							<div class="ps-4">
+								<p class="mb-0">Yıllık</p>
+								<h6 class="text-uppercase mb-0">Deneyim</h6>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="d-flex align-items-center border-start border-5 border-primary px-3">
+							<h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
+							<div class="ps-4">
+								<p class="mb-0">Popüler</p>
+								<h6 class="text-uppercase mb-0">Usta Şef</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- About End -->
+<!-- Menu Start -->
+<div class="container-xxl py-5">
+	<div class="container">
+		<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+			<h5 class="section-title ff-secondary text-center text-primary fw-normal">Yiyecek Menüsü</h5>
+			<h1 class="mb-5">En Lezzetli Ürünlerimiz</h1>
+		</div>
+		<div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+			<ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+				<li class="nav-item">
+					<a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
+						<i class="fa fa-coffee fa-2x text-primary"></i>
+						<div class="ps-3">
+							<small class="text-body">Tüm</small>
+							<h6 class="mt-n1 mb-0">Menüler</h6>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
+						<i class="fa fa-hamburger fa-2x text-primary"></i>
+						<div class="ps-3">
+							<small class="text-body">Sadece</small>
+							<h6 class="mt-n1 mb-0">Hamburgerler</h6>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
+						<i class="fa fa-utensils fa-2x text-primary"></i>
+						<div class="ps-3">
+							<small class="text-body">Lezzetli</small>
+							<h6 class="mt-n1 mb-0">Yan Ürünler</h6>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div id="tab-1" class="tab-pane fade show p-0 active">
+					<div class="row g-4">
+						@*Burası Tekrar Eden Kısım ForEach Gelecek Buraya Menüler*@
+						@foreach (Menu menu in Model.Menuler)
+						{
+							<div class="col-lg-6">
+								<div class="d-flex align-items-center">
+									<img class="flex-shrink-0 img-fluid rounded" src="~/img/menu-1.jpg" alt="" style="width: 80px;">
+									<div class="w-100 d-flex flex-column text-start ps-4">
+										<h5 class="d-flex justify-content-between border-bottom pb-2">
+											<span>@menu.MenuAdi</span>
+											<span class="text-primary">@menu.MenuFiyat TL</span>
+										</h5>
+										<small class="fst-italic">Menü Açıklaması Gelecek</small>
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+
+				<div id="tab-2" class="tab-pane fade show p-0">
+					<div class="row g-4">
+						@*Burası da Aynı Şekilde Sorgularla Gelecek Hamburgerler İçin*@
+						@foreach (Hamburger hamburger in Model.Hamburgerler)
+						{
+							<div class="col-lg-6">
+								<div class="d-flex align-items-center">
+									<img class="flex-shrink-0 img-fluid rounded" src="~/img/menu-1.jpg" alt="" style="width: 80px;">
+									<div class="w-100 d-flex flex-column text-start ps-4">
+										<h5 class="d-flex justify-content-between border-bottom pb-2">
+											<span>@hamburger.HamburgerAdi</span>
+											<span class="text-primary">@hamburger.HamburgerFiyat TL</span>
+										</h5>
+										<small class="fst-italic">Buraya Hamburger Açıklaması Gelecek</small>
+									</div>
+								</div>
+							</div>
+						}
+
+					</div>
+				</div>
+
+				<div id="tab-3" class="tab-pane fade show p-0">
+					<div class="row g-4">
+						@*Aynı Şekilde Sorgu Gelecek*@
+						@foreach (EkMalzeme ekMalzeme in Model.EkMalzemeler)
+						{
+							<div class="col-lg-6">
+								<div class="d-flex align-items-center">
+									<img class="flex-shrink-0 img-fluid rounded" src="~/img/menu-1.jpg" alt="" style="width: 80px;">
+									<div class="w-100 d-flex flex-column text-start ps-4">
+										<h5 class="d-flex justify-content-between border-bottom pb-2">
+											<span>@ekMalzeme.EkMalzemeAdi</span>
+											<span class="text-primary">@ekMalzeme.EkMalzemeFiyat TL</span>
+										</h5>
+										<small class="fst-italic">Buraya Açıklama Gelecek</small>
+									</div>
+								</div>
+							</div>
+						}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Menu End -->
+<!-- Team Start -->
+<div class="container-xxl pt-5 pb-3">
+	<div class="container">
+		<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+			<h5 class="section-title ff-secondary text-center text-primary fw-normal">Takım Üyelerimiz</h5>
+			<h1 class="mb-5">Şeflerimiz</h1>
+		</div>
+		<div class="row g-4 justify-content-center">
+			<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+				<div class="team-item text-center rounded overflow-hidden">
+					<div class="rounded-circle overflow-hidden m-4">
+						<img class="img-fluid" src="~/img/team-1.jpg" alt="">
+					</div>
+					<h5 class="mb-0">Bora Yıldırım</h5>
+					<small>Gurme</small>
+					<div class="d-flex justify-content-center mt-3">
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+				<div class="team-item text-center rounded overflow-hidden">
+					<div class="rounded-circle overflow-hidden m-4">
+						<img class="img-fluid" src="~/img/team-2.jpg" alt="">
+					</div>
+					<h5 class="mb-0">Emre Bekfilavi</h5>
+					<small>Lezzet Sorumlusu</small>
+					<div class="d-flex justify-content-center mt-3">
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+				<div class="team-item text-center rounded overflow-hidden">
+					<div class="rounded-circle overflow-hidden m-4">
+						<img class="img-fluid" src="~/img/team-3.jpg" alt="">
+					</div>
+					<h5 class="mb-0">Ünal Kork</h5>
+					<small>Fırın Sorumlusu</small>
+					<div class="d-flex justify-content-center mt-3">
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+						<a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Team End -->
